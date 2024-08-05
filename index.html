@@ -147,7 +147,7 @@
             var nombre = document.getElementById('nombre').value;
             var ganador = document.querySelector('input[name="ganador"]:checked').value;
 
-            fetch('https://script.google.com/macros/s/AKfycbz0sYcR_OQM3e9e_PAcx0sNsa-MRR7cW5UEZ1bYc5TjibQdJxp8Bga9-dyofz7ICyqM/exec', { // Sustituye con la URL de tu Web App
+            fetch('https://script.google.com/macros/s/AKfycbyjnDmkZ9JCJ6GIwr3Cm1iYOdzKG3V0yV8_2EmcOnPh8owZAJNPnhRcqq4jRUIe1W60WQ/exec', { // Sustituye con la URL de tu Web App
                 method: 'POST',
                 contentType: 'application/json',
                 body: JSON.stringify({nombre: nombre, ganador: ganador})
