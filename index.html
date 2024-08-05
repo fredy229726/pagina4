@@ -145,19 +145,30 @@
     <script>
         function submitForm() {
             var nombre = document.getElementById('nombre').value;
-            var ganador = document.querySelector('input[name="ganador"]:checked').value;
+            var ganador = document.querySelector('input[name="ganador"]:checked');
+
+            if (!ganador) {
+                alert("Por favor, elige un ganador.");
+                return;
+            }
+
+            var ganadorValue = ganador.value;
 
             fetch('https://script.google.com/macros/s/AKfycbyjnDmkZ9JCJ6GIwr3Cm1iYOdzKG3V0yV8_2EmcOnPh8owZAJNPnhRcqq4jRUIe1W60WQ/exec', { // Sustituye con la URL de tu Web App
                 method: 'POST',
-                contentType: 'application/json',
-                body: JSON.stringify({nombre: nombre, ganador: ganador})
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({nombre: nombre, ganador: ganadorValue})
             })
             .then(response => response.text())
             .then(result => {
                 alert(result);
+                document.getElementById('apuestaForm').reset(); // Limpiar el formulario después del envío
             })
             .catch(error => {
                 console.error('Error:', error);
+                alert("Hubo un error al enviar los datos.");
             });
         }
     </script>
